@@ -29,7 +29,7 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
 # Next.js uses port 3000 by default
-EXPOSE 3000
+EXPOSE 8080
 
 # Start the server
 CMD ["npm", "start"]
