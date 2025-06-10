@@ -37,7 +37,7 @@ const StorybookDetail = () => {
 
   useEffect(() => {
     const fetchBook = async () => {
-      const res = await fetch(`${API_URL}/storybook/read?id=${id}`);
+      const res = await fetch(`https://edusiap-api2-498867854322.asia-southeast2.run.app/storybook/read?id=${id}`);
       const data = await res.json();
       if (data && data.response) {
         setBook(data.response);
@@ -65,17 +65,17 @@ const StorybookDetail = () => {
       />
 
       <Sidebar />
-      <main className="flex-1 ml-[97px] relative z-10">
+      <main className="flex-1 ml-[97px] relative z-10 max-sm:ml-0">
         <Header />
         <div className="flex flex-col items-center w-full px-4 py-10 mt-20">
-          <h1 className="text-3xl font-bold mb-4 text-lime-800 text-center">{book.title}</h1>
+          <h1 className="text-3xl font-bold mb-4 text-lime-800 text-center max-sm:text-3xl">{book.title}</h1>
 
           <iframe
             src={getEmbedLink(book.book_link)}
-            width="100%"
+            width="450"
             height="600"
             allow="autoplay"
-            className="max-w-4xl border-2 border-gray-300 rounded-md"
+            className="max-w-4xl border-2 border-gray-300 rounded-md max-sm:w-[250px] max-sm:h-[360px]"
           ></iframe>
 
           {/* Tombol berada di bawah iframe */}

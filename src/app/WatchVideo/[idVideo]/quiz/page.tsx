@@ -61,7 +61,7 @@ const QuizPage = () => {
     if (!quiz) return;
 
     try {
-      const response = await fetch('${API_URL}/user-quiz/upload', {
+      const response = await fetch('http://https://edusiap-api2-498867854322.asia-southeast2.run.app/user-quiz/upload', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ const QuizPage = () => {
 
     setScoreLoading(true);
     try {
-      const response = await fetch(`${API_URL}/user-quiz/?quiz_id=${quizId}`, {
+      const response = await fetch(`https://edusiap-api2-498867854322.asia-southeast2.run.app/user-quiz/?quiz_id=${quizId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
         }

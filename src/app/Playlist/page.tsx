@@ -21,7 +21,7 @@ const PlaylistPage = () => {
   useEffect(() => {
     const fetchPlaylists = async () => {
       try {
-        const res = await fetch("${API_URL}/playlists");
+        const res = await fetch("https://edusiap-api2-498867854322.asia-southeast2.run.app/playlists");
         const data = await res.json();
         if (data && data.response) {
           setPlaylists(data.response);
@@ -42,10 +42,10 @@ const PlaylistPage = () => {
       ></div>
 
       <Sidebar />
-      <main className="flex-1 ml-[97px] relative z-10">
+      <main className="flex-1 ml-[97px] relative z-10 max-sm:ml-0">
         <Header />
-        <div className="flex flex-col items-center w-full px-4 py-10">
-          <h1 className="text-4xl font-bold mb-8 text-black text-center">
+        <div className="flex flex-col items-center w-full px-4 py-10 mt-18">
+          <h1 className="text-4xl font-bold mb-8 text-black text-center max-sm:text-3xl">
             Playlist EduSiap!
           </h1>
 

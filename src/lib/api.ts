@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL ;
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://edusiap-api2-498867854322.asia-southeast2.run.app';
 import { apiClient } from './apiClient';
 
 // Helper function to handle responses

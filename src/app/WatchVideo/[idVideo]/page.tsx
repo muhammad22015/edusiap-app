@@ -50,7 +50,7 @@ export default function WatchVideoPage() {
   useEffect(() => {
     const fetchVideo = async () => {
       try {
-        const res = await fetch(`${API_URL}/videos?id=${idVideo}`);
+        const res = await fetch(`https://edusiap-api2-498867854322.asia-southeast2.run.app/videos?id=${idVideo}`);
         const data = await res.json();
 
         if (data.status === 'Authorized') {
@@ -110,7 +110,7 @@ export default function WatchVideoPage() {
         className="pointer-events-none absolute inset-0 opacity-20"
         style={{
           backgroundImage: 'url(/doodle.jpg)',
-          backgroundRepeat: 'no-repeat',
+          backgroundRepeat: 'repeat',
           backgroundSize: '110% auto',
           backgroundPosition: 'center',
           zIndex: 0,
