@@ -35,7 +35,7 @@ const StorybookDetail = () => {
 
   useEffect(() => {
     const fetchBook = async () => {
-      const res = await fetch(`http://localhost:5000/storybook/read?id=${id}`);
+      const res = await fetch(`https://edusiap-api2-498867854322.asia-southeast2.run.app/storybook/read?id=${id}`);
       const data = await res.json();
       if (data && data.response) {
         setBook(data.response);

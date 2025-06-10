@@ -18,7 +18,7 @@ const PdfReaderPage = () => {
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const res = await fetch("http://localhost:5000/storybook");
+      const res = await fetch("https://edusiap-api2-498867854322.asia-southeast2.run.app/storybook");
       const data = await res.json();
       if (data && data.response) {
         setBooks(data.response);

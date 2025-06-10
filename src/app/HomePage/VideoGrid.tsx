@@ -20,7 +20,7 @@ export const VideoGrid: React.FC<VideoGridProps> = ({ searchQuery }) => {
     const fetchVideos = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch('http://localhost:5000/videos');
+        const response = await fetch('https://edusiap-api2-498867854322.asia-southeast2.run.app/videos');
         const data = await response.json();
         
         if (Array.isArray(data.response)) {

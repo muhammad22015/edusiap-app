@@ -2,7 +2,7 @@
 import { getAccessToken, getRefreshToken, setTokens, clearTokens } from './auth';
 import { refreshAccessToken } from './api';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://edusiap-api2-498867854322.asia-southeast2.run.app';
 
 export const apiClient = async (endpoint: string, options: RequestInit = {}) => {
   let accessToken = getAccessToken();

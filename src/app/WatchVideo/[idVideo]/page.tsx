@@ -48,7 +48,7 @@ export default function WatchVideoPage() {
   useEffect(() => {
     const fetchVideo = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/videos?id=${idVideo}`);
+        const res = await fetch(`https://edusiap-api2-498867854322.asia-southeast2.run.app/videos?id=${idVideo}`);
         const data = await res.json();
 
         if (data.status === 'Authorized') {

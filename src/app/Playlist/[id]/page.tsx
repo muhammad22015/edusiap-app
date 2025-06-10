@@ -29,7 +29,7 @@ const PlaylistDetailPage = () => {
   useEffect(() => {
     const fetchPlaylistVideos = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/playlists-videos?id=${id}`);
+        const res = await fetch(`https://edusiap-api2-498867854322.asia-southeast2.run.app/playlists-videos?id=${id}`);
         const data = await res.json();
         if (data && data.response) {
           setVideos(data.response);
