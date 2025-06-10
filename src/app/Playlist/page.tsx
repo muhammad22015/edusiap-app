@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Sidebar } from "@/components/Sidebar";
 import { Header } from "@/components/Header";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 interface Playlist {
   playlist_id: number;
   title: string;
@@ -20,7 +21,7 @@ const PlaylistPage = () => {
   useEffect(() => {
     const fetchPlaylists = async () => {
       try {
-        const res = await fetch("http://localhost:5000/playlists");
+        const res = await fetch("${API_URL}/playlists");
         const data = await res.json();
         if (data && data.response) {
           setPlaylists(data.response);

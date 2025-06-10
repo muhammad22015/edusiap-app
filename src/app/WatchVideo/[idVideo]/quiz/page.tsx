@@ -5,6 +5,8 @@ import { useParams, useRouter } from 'next/navigation';
 import { submitQuizScore } from '@/lib/api';
 import { getQuizByVideoId } from '@/lib/api';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 interface Answer {
   answer_id: number;
   answer: string;
@@ -59,7 +61,7 @@ const QuizPage = () => {
     if (!quiz) return;
 
     try {
-      const response = await fetch('http://localhost:5000/user-quiz/upload', {
+      const response = await fetch('${API_URL}/user-quiz/upload', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +89,7 @@ const QuizPage = () => {
 
     setScoreLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/user-quiz/?quiz_id=${quizId}`, {
+      const response = await fetch(`${API_URL}/user-quiz/?quiz_id=${quizId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
         }

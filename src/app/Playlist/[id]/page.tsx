@@ -5,6 +5,8 @@ import { useParams, useRouter } from "next/navigation";
 import { Sidebar } from "@/components/Sidebar";
 import { Header } from "@/components/Header";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 interface Video {
   video_id: number;
   video_url: string;
@@ -29,7 +31,7 @@ const PlaylistDetailPage = () => {
   useEffect(() => {
     const fetchPlaylistVideos = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/playlists-videos?id=${id}`);
+        const res = await fetch(`${API_URL}/playlists-videos?id=${id}`);
         const data = await res.json();
         if (data && data.response) {
           setVideos(data.response);

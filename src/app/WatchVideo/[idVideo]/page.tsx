@@ -7,6 +7,8 @@ import React, { useEffect, useState } from 'react';
 import { getQuizScore } from '@/lib/api';
 import { getAccessToken } from '@/lib/auth'; // Import function to check login status
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 interface Video {
   video_id: number;
   title: string;
@@ -48,7 +50,7 @@ export default function WatchVideoPage() {
   useEffect(() => {
     const fetchVideo = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/videos?id=${idVideo}`);
+        const res = await fetch(`${API_URL}/videos?id=${idVideo}`);
         const data = await res.json();
 
         if (data.status === 'Authorized') {

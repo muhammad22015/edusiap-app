@@ -6,6 +6,8 @@ import { registerUser } from '@/lib/api';
 import InputField from './InputField';
 import SocialButton from './SocialButton';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 interface SignUpFormProps {}
 
 const SignUpForm: React.FC<SignUpFormProps> = () => {

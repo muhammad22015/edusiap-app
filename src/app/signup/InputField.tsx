@@ -1,5 +1,7 @@
 import React from 'react';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 interface InputFieldProps {
   label: string;
   type: string;

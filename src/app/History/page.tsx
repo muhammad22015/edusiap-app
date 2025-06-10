@@ -7,6 +7,8 @@ import { Header } from "@/components/Header";
 import { apiClient } from "@/lib/apiClient";
 import { getUserIdFromToken } from "@/lib/auth";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 interface Video {
   video_id: number;
   video_url: string;

@@ -5,6 +5,8 @@ import { useParams, useRouter } from "next/navigation";
 import { Sidebar } from "@/components/Sidebar";
 import { Header } from "@/components/Header";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 interface Storybook {
   book_id: number;
   title: string;
@@ -35,7 +37,7 @@ const StorybookDetail = () => {
 
   useEffect(() => {
     const fetchBook = async () => {
-      const res = await fetch(`http://localhost:5000/storybook/read?id=${id}`);
+      const res = await fetch(`${API_URL}/storybook/read?id=${id}`);
       const data = await res.json();
       if (data && data.response) {
         setBook(data.response);
