@@ -42,10 +42,10 @@ const PdfReaderPage = () => {
       />
 
       <Sidebar />
-      <main className="flex-1 ml-[120px] relative z-10">
+      <main className="flex-1 ml-[120px] relative z-10 max-sm:ml-0">
         <Header />
-        <div className="flex flex-col items-center w-full py-10">
-          <h1 className="text-4xl font-bold mb-8 text-black text-center">
+        <div className="flex flex-col items-center w-full py-10 mt-20">
+          <h1 className="text-4xl font-bold mb-8 text-black text-center max-sm:text-3xl">
             Buku Cerita Anak!
           </h1>
 
@@ -68,7 +68,7 @@ const PdfReaderPage = () => {
         hover:scale-110 
         hover:shadow-2xl
         w-full
-        max-w-[320px]
+        max-w-[300px]
       "
     >
       {/* Overlay hover */}

@@ -59,10 +59,10 @@ const PlaylistDetailPage = () => {
       />
 
       <Sidebar />
-      <main className="flex-1 ml-[97px] relative z-10">
+      <main className="flex-1 ml-[97px] relative z-10 max-sm:ml-0">
         <Header />
         <div className="flex flex-col items-center w-full px-4 py-10">
-          <h1 className="text-3xl font-bold mb-8 text-black text-center">
+          <h1 className="text-3xl font-bold mb-8 text-black text-center mt-18 max-sm:text-3xl">
             Video Playlist {id}
           </h1>
 
