@@ -7,7 +7,10 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true
-  }
+  },
+  images: {
+    domains: ['i.imgur.com', 'imgur.com'],
+  },
 }
 
 module.exports = nextConfig
