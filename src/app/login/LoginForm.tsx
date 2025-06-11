@@ -33,7 +33,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
         setErrorMessage(loginResponse.status);
       }
     } catch (error) {
-      setErrorMessage('An error occurred during login. Please try again.');
+      setErrorMessage('Terjadi Kesalahan Saat Login. Silahkan Coba Lagi');
     }
   };
 

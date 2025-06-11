@@ -88,10 +88,10 @@ export const submitQuizScore = async (quiz_id: number, score: number) => {
       method: 'POST',
       body: JSON.stringify({ quiz_id, score }),
     });
-    console.log('Score submission success:', response); // Add logging
+    console.log('Submit Skor Quiz Berhasil:', response); // Add logging
     return response;
   } catch (error) {
-    console.error('Score submission failed:', error); // Enhanced error logging
+    console.error('Submit Skor Quiz Gagal:', error); // Enhanced error logging
     throw error;
   }
 };
@@ -108,7 +108,7 @@ export const getQuizScore = async (quiz_id: number) => {
     });
     return response;
   } catch (error) {
-    console.error('Error fetching quiz score:', error);
+    console.error('Gagal Menganbil Skor Quiz:', error);
     throw error;
   }
 };
