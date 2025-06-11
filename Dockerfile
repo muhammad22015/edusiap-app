@@ -1,32 +1,22 @@
-# Tahap build
-FROM node:20 AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Salin file config lebih dulu
-COPY package*.json ./
-
-ENV LIGHTNINGCSS_FORCE_SYSTEM_BINARY=true
-
-# Ini paksa install full binary Linux
-ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
+# Install tool agar bisa build native module (lightningcss)
 RUN apk add --no-cache build-base python3 make gcc g++ rust cargo
 
-# Pastikan clean install dan native rebuild untuk lightningcss
-RUN npm install --ignore-scripts && \
-    npm rebuild lightningcss && \
-    npm run postinstall || true
+COPY package*.json ./
 
-# Salin semua source code
+# Force install ulang lightningcss di environment Linux
+ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
+RUN npm install
+
 COPY . .
 
-# Jalankan build
 RUN npm run build
 
-# Tahap produksi
 FROM node:20-alpine
 WORKDIR /app
 
-# Salin hasil build saja
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
