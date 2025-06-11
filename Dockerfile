@@ -2,14 +2,9 @@
 FROM node:20 AS builder
 WORKDIR /app
 
-# Install native build tools
-RUN apt-get update && apt-get install -y python3 make gcc g++ rust cargo
-
 # Copy dependency files only
 COPY package*.json ./
-ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
 RUN npm install
-RUN npm rebuild lightningcss --build-from-source
 
 # Copy the rest of the app
 COPY . .
