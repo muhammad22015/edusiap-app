@@ -1,23 +1,24 @@
 FROM node:20 AS builder
 WORKDIR /app
 
-# Salin hanya file konfigurasi terlebih dulu
+# 1️⃣ Salin file konfigurasi
 COPY package*.json ./
 
-# Install ulang dependency di Linux environment
-RUN npm install
+# 2️⃣ Install ulang dengan native binary Linux
+RUN npm install --ignore-scripts && \
+    npm rebuild lightningcss
 
-# Baru salin source code
+# 3️⃣ Salin seluruh project
 COPY . .
 
-# Jalankan build Next.js
+# 4️⃣ Build Next.js app
 RUN npm run build
 
-# Tahap produksi: hanya copy hasil build
+# 5️⃣ Tahap produksi
 FROM node:20-alpine
 WORKDIR /app
 
-# Salin hasil build saja
+# Salin hasil build dari builder
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
