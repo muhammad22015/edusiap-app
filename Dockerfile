@@ -1,33 +1,31 @@
-# ---------- Build Stage ----------
+# Build stage
 FROM node:20 AS builder
 WORKDIR /app
 
-# Install dependencies (no need for apk in Debian-based image)
-RUN apt-get update && \
-    apt-get install -y python3 make gcc g++ rust cargo && \
-    apt-get clean
+# Install native build tools
+RUN apt-get update && apt-get install -y python3 make gcc g++ rust cargo
 
+# Copy dependency files only
 COPY package*.json ./
-
-# Force install lightningcss with source build
 ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
 RUN npm install
 RUN npm rebuild lightningcss --build-from-source
 
+# Copy the rest of the app
 COPY . .
 
+# Build Next.js
 RUN npm run build
 
-# ---------- Runtime Stage ----------
-FROM node:20 AS runner
+# Runtime stage
+FROM node:20
 WORKDIR /app
 
-# Copy only what's needed for standalone deployment
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/static ./.next/static
 
-ENV PORT 8080
+ENV PORT=8080
 EXPOSE 8080
 
 CMD ["node", "server.js"]
