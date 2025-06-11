@@ -56,7 +56,7 @@ export const apiClient = async (endpoint: string, options: RequestInit = {}) => 
         }
       } catch (refreshError) {
         console.error('Refresh token failed:', refreshError);
-        throw new Error('Session expired. Please login again.');
+        throw new Error('Session expired. Silahkan Login Kembali.');
       }
     }
     throw error;
