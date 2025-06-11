@@ -9,6 +9,8 @@ COPY package*.json ./
 # Force install ulang lightningcss di environment Linux
 ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
 RUN npm install
+RUN npm rebuild lightningcss --build-from-source
+
 
 COPY . .
 
