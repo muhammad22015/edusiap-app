@@ -1,18 +1,23 @@
-# Tahap build: compile Next.js app
 FROM node:20 AS builder
 WORKDIR /app
 
+# Salin hanya file konfigurasi terlebih dulu
 COPY package*.json ./
+
+# Install ulang dependency di Linux environment
 RUN npm install
 
+# Baru salin source code
 COPY . .
+
+# Jalankan build Next.js
 RUN npm run build
 
-# Tahap production: hanya file yang dibutuhkan
+# Tahap produksi: hanya copy hasil build
 FROM node:20-alpine
 WORKDIR /app
 
-# Copy semua hasil build yang dibutuhkan ke container akhir
+# Salin hasil build saja
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
