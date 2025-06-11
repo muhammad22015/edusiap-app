@@ -5,6 +5,12 @@ WORKDIR /app
 # Salin file config lebih dulu
 COPY package*.json ./
 
+ENV LIGHTNINGCSS_FORCE_SYSTEM_BINARY=true
+
+# Ini paksa install full binary Linux
+ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
+RUN apk add --no-cache build-base python3 make gcc g++ rust cargo
+
 # Pastikan clean install dan native rebuild untuk lightningcss
 RUN npm install --ignore-scripts && \
     npm rebuild lightningcss && \
